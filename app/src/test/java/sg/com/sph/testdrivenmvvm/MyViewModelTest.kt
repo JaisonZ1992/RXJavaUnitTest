@@ -49,7 +49,7 @@ class MyViewModelTest {
     @Test
     fun `Given DataRepository returns data, when getStuff() called, then update live data`() {
         //Setting how up the mock behaves
-        whenever(mockDataRepository.fetchData()).thenReturn(Single.just("Data").toObservable())
+        whenever(mockDataRepository.fetchData()).thenReturn(Single.just("Data"))
 
         //Fire the test method
         myViewModel.getStuff()
@@ -63,7 +63,7 @@ class MyViewModelTest {
     @Test
     fun `Given DataRepository returns error, when getStuff() called, then do not change live data`() {
         //Setting how up the mock behaves
-        whenever(mockDataRepository.fetchData()).thenReturn(Observable.error(Throwable()))
+        whenever(mockDataRepository.fetchData()).thenReturn(Single.error(Throwable()))
 
         myViewModel.testLiveData.observeForever(mockLiveDataObserver)
 

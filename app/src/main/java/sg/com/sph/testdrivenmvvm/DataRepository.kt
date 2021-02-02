@@ -1,7 +1,7 @@
 package sg.com.sph.testdrivenmvvm
 
-import io.reactivex.Observable
+import io.reactivex.Single
 
 interface DataRepository {
-    fun fetchData(): Observable<String>
+    fun fetchData(): Single<String>
 }
